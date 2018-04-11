@@ -68,6 +68,7 @@
         left: 0px;
         font-size: 12px;
         box-shadow: 0 0 1px #ccc;
+        z-index: 100;
 	}
 	.foot-font{
     	display: flex;

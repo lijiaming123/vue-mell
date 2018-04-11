@@ -18,6 +18,8 @@ Vue.use(MintUI)
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  console.log(to)
+    console.log(router)
     if (to.meta.requireAuth) {  // 需要权限,进一步进行判断
       if (store.state.login.token) {  // 通过vuex state获取当前的token是否存在
         next();

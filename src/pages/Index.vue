@@ -48,8 +48,18 @@
     </div>
     <!-- 秒杀 -->
     <div class="index-seckill">
-    	<div><img src="../assets/img/秒杀.png" height="30" width="30"></div>
+    	<div><img src="../assets/img/秒杀.png" height="30" width="30"><span class="seckill-date">{{date}}点场</span><span></span><span></span><span></span></div>
     </div>
+    <!-- 商品列表 -->
+	 <div class="index-goodlist">
+	  <el-row>
+		  <el-col :span="12" class="el-col"><div><img src="../assets/img/computer.png"></div>
+		  	<div class="seckill-price"><span>¥4788</span></div><div><span class="oldprice">4988</span></div></el-col>
+		  <el-col :span="12"><div><img src="../assets/img/computer.png"></div>
+		  	<div class="seckill-price"><span>¥139</span></div><div><span class="oldprice">199</span></div></el-col>
+	  </el-row>
+    </div>
+    <!-- 底部组件 -->
 	<v-foot></v-foot>
     </div>
 </template>
@@ -63,8 +73,25 @@
              {imgurl:require('@/assets/img/banaer1.jpg')},
              {imgurl:require('@/assets/img/banaer2.jpg')},
              {imgurl:require('@/assets/img/banaer3.jpg')}
-             ]
+             ],
+             date:'',
+             hours:'',
+             min:'',
+             second:'',
 			}
+		},
+		created(){
+            var data = new Date();
+            var date = data.getHours();
+            if (date>=22||date<6) {
+            	this.date = 22
+            }else if (date<14&&date>=6) {
+            	this.date = 6
+            }else if (date<22&&date>=14) {
+            	this.date = 14
+            };
+            var min = data.getMinutes();
+            var second = data.getSeconds();
 		},
 		components:{
 			'v-foot':Foot
@@ -84,6 +111,9 @@
 </script>
 
 <style scoped>
+    .index{
+    	background: #f6f6f6;
+    }
     .index-top{
     	width: 100vw;
     	height: 6vh;
@@ -93,7 +123,6 @@
     	background: #e43130;
     }
 	.search{
-		width: 80vw;
 		border: 1px solid #ccc;
 		border-radius: 10px;
 		height: 4vh;
@@ -112,7 +141,6 @@
         left: 30px;
         top: 0px;
         height: 4vh;
-
 	}
 	.index-banaer{
 		width: 100vw;
@@ -140,11 +168,33 @@
 	}
 	.index-seckill{
 		margin-top: 10px;
-        height: 10vh;
-        line-height: 10vh;
+        height: 8vh;
+        line-height: 8vh;
         background-color: #fff;
 	}
 	.index-seckill img{
 		margin-left: 6vw;
+	}
+	.seckill-date{
+		margin-left: 2vw;
+		font-weight: bold;
+	}
+	.index-goodlist{
+		background: #fff;
+		text-align: center;
+	}
+	.index-goodlist img{
+		width: 40vw;
+		height: 20vh;
+	}
+	.el-col{
+		border: 1px solid #eee;
+	}
+	.seckill-price{
+		color: rgb(242, 48, 48);
+	}
+	.oldprice{
+		text-decoration: line-through;
+		font-style: 10px;
 	}
 </style>
