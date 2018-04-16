@@ -65,7 +65,7 @@
 </template>
 
 <script>
-	import Foot from './foot.vue'
+	import Foot from '../common/foot.vue'
 	export default {
 		data(){
 			return{
