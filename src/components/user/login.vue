@@ -52,6 +52,7 @@
 	<script>
 		import Foot from '../../common/foot.vue';
 		import Header from './user_header.vue';
+		import { Toast } from 'mint-ui';
 		export default{
 			components:{
 				'v-foot':Foot,
@@ -69,6 +70,12 @@
 			methods:{
 				//登录
 				Login(){
+					if (this.account == ''||this.password=='') {
+						Toast({
+  							message: '请输入账号或密码',
+						});
+						return
+					}
 	              this.axios.get('https://www.zhxnycbx.com/api/login',{
 	          		params:{
 	            	user:this.account,
