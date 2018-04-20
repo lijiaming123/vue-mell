@@ -38,12 +38,15 @@ router.beforeEach((to, from, next) => {
       store.commit('SET_ACTIVEINDEX',4);
     }
     if (to.meta.requireAuth) {  // 需要权限,进一步进行判断   //如果没有权限,重定向到登录页,进行登录
+        if (sessionStorage.getItem('token')) {
+          next()
+        }else{
         next({
           path: '/login',
           // query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
         })
-    }
-    else { //不需要权限 直接跳转
+      }
+    }else { //不需要权限 直接跳转
       next();
     }
 })

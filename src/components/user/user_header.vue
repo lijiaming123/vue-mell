@@ -18,6 +18,7 @@
 		text-align: center;
 		position: absolute;
 		top: 0;
+		font-size: 0.3rem;
 	}
 	.login img{
 		margin-left: 3vw;

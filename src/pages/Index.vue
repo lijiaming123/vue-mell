@@ -6,12 +6,12 @@
 	    </el-col> -->
 	    <el-col :span='20'>
 		<div class="search">
-			<img src="@/assets/img/search.png" width="15" height="15">
+			<img src="@/assets/img/search.png">
 			<input type="text">
 		</div>
 	    </el-col>
 	    <el-col :span='4'>
-	    	<div style="font-size:14px;white-space: nowrap;color: #fff">
+	    	<div style="font-size:0.3rem;white-space: nowrap;color: #fff">
 	    		登录
 	    	</div>
 	    <div>
@@ -110,9 +110,10 @@
 	}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     .index{
     	background: #f6f6f6;
+    	font-size: 0.3rem;
     }
     .index-top{
     	width: 100vw;
@@ -123,24 +124,26 @@
     	background: #e43130;
     }
 	.search{
-		border: 1px solid #ccc;
+		border: 0.02rem solid #ccc;
 		border-radius: 10px;
 		height: 4vh;
 		line-height: 4vh;
 		margin: 1vh;
 		position: relative;
 		background: #fff;
-	}
-	.search img{
-		position: absolute;
-		left: 10px;
-		top: 1vh;
-	}
-	.search input{
-        position: absolute;
-        left: 30px;
-        top: 0px;
-        height: 4vh;
+		img{
+			position: absolute;
+			left: 0.2rem;
+			top: 1vh;
+			height: 0.3rem;
+			width: 0.3rem;
+	    }
+	    input{
+	    	position: absolute;
+	        left: 0.6rem;
+	        top: 0px;
+	        height: 4vh;
+	    }
 	}
 	.index-banaer{
 		width: 100vw;
@@ -151,23 +154,24 @@
 	.index-menu{
 		margin-top: 20vh;
 		background-color: #fff;
-	}
-	.menu-one{
-        display: flex;
-        padding-top: 20px;
-	}
-	.menu-one div{
-		flex: 1;
-		text-align: center;
-		font-size: 14px;
-	}
-	.menu-one img{
-		height: 30px;
-		width: 30px;
-		margin-bottom: 5px;
+		padding-bottom: 0.2rem;
+		.menu-one{
+		        display: flex;
+		        padding-top: 0.4rem;
+		        div{
+					flex: 1;
+					text-align: center;
+					font-size: 0.2rem;
+				}
+				img{
+					height: 0.6rem;
+					width: 0.6rem;
+					margin-bottom: 0.1rem;
+				}
+			}
 	}
 	.index-seckill{
-		margin-top: 10px;
+		margin-top: 0.2rem;
         height: 8vh;
         line-height: 8vh;
         background-color: #fff;
@@ -188,13 +192,13 @@
 		height: 20vh;
 	}
 	.el-col{
-		border: 1px solid #eee;
+		border: 0.02rem solid #eee;
 	}
 	.seckill-price{
 		color: rgb(242, 48, 48);
 	}
 	.oldprice{
 		text-decoration: line-through;
-		font-style: 10px;
+		font-style: 0.2rem;
 	}
 </style>

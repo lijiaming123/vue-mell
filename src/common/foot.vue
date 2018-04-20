@@ -1,7 +1,7 @@
 <template>
 		<div class="foot">
 			<div class="foot-font">
-			    <div v-for="(item,index) in footselect" @click="gotoroute(item,index)" :class="{active:activeindex == index}"><div><img :src='item.imgurl' height="20" width="20"></div>{{item.name}}</div>
+			    <div v-for="(item,index) in footselect" @click="gotoroute(item,index)" :class="{active:activeindex == index}"><div><img :src='item.imgurl'></div><span>{{item.name}}</span></div>
 		    </div>
 <!-- 		      <el-tabs v-model="activeName" @tab-click="handleClick">
     <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
@@ -58,25 +58,29 @@
 
 <style scoped>
 	.foot{
-		padding-top: 0.5vh;
 		width: 100vw;
-		height: 6vh;
+		height: 10vh;
 		position: fixed;
         bottom: 0px;
         border-top: 1px solid #ccc;
         left: 0px;
-        font-size: 12px;
+        font-size: 0.2rem;
         box-shadow: 0 0 1px #ccc;
         z-index: 100;
+        background: #fff;
 	}
 	.foot-font{
     	display: flex;
     	width: 100vw;
+        margin-top: 2vh;
     }
-
     .foot-font div{
     	flex: 1;
     	text-align: center;
+    }
+    img{
+        width: 0.4rem;
+        height: 0.4rem;
     }
     .active{
     	color: red;
