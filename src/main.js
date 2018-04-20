@@ -38,8 +38,14 @@ router.beforeEach((to, from, next) => {
       store.commit('SET_ACTIVEINDEX',4);
     }
     if (to.meta.requireAuth) {  // 需要权限,进一步进行判断   //如果没有权限,重定向到登录页,进行登录
-        if (sessionStorage.getItem('token')) {
+        // if (sessionStorage.getItem('token')) {
+        //   if (to.name == '登录页') {
+        //     next({
+        //       path:'/user',
+        //     })
+        //   }else{
           next()
+          // }
         }else{
         next({
           path: '/login',
