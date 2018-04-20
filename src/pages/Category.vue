@@ -68,7 +68,7 @@
 		position: relative;
 		overflow: hidden;
 		width: 30vw;
-	    height: 87.5vh;
+	    height: 84vh;
 	}
 	.category-aside{
 		width: 30vw;
