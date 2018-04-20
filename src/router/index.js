@@ -38,8 +38,5 @@ export default new Router({
     path:'/login',
     name:'登录页',
     component:Login,
-    meta: {
-         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
-       },
   }]
 })

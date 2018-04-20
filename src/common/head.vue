@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
-	    <img src="../../assets/img/back.png">
-	    <span>登录</span>
+	    <img src="@/assets/img/back.png" @click="$router.go(-1)">
+	    <slot name="title"></slot>
 	</div>
 </template>
 
@@ -19,6 +19,7 @@
 		position: absolute;
 		top: 0;
 		font-size: 0.3rem;
+		border-bottom: 0.02rem solid #CCC;
 	}
 	.login img{
 		margin-left: 3vw;

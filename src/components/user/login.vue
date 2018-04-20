@@ -1,6 +1,8 @@
 	<template>
 		<div class="login">
-		<v-header></v-header>
+		<v-header>
+			<h1 slot="title">登录</h1>
+		</v-header>
 		<div class="login-content">
 			<div class="login-keyword" v-if='msgshow == false'>
 				<div>
@@ -51,8 +53,8 @@
 	</template>
 
 	<script>
-		import Foot from '../../common/foot.vue';
-		import Header from './user_header.vue';
+		import Foot from '@/common/foot.vue';
+		import Header from '@/common/head.vue';
 		import { Toast } from 'mint-ui';
 		export default{
 			components:{
@@ -87,11 +89,12 @@
 	          		console.log(res.data)
                     if (res.data.status == '200') {
                     	sessionStorage.setItem("token", res.data.token);
-                        setTimeout(()=>{
-              this.$router.replace({
-                path: 'user'
-              })
-            },1000);
+            			sessionStorage.setItem("user_info", JSON.stringify(res.data.data));
+		               setTimeout(()=>{
+			              this.$router.replace({
+			                path: 'user'
+			              })
+            			},1000);
                     }else{
                         this.tip = res.data.msg;
                         setTimeout(()=>{

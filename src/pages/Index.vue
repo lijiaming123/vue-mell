@@ -112,7 +112,6 @@
 
 <style lang="less" scoped>
     .index{
-    	background: #f6f6f6;
     	font-size: 0.3rem;
     }
     .index-top{
