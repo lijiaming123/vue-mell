@@ -4,11 +4,11 @@
 		<v-head><h1 slot="title">购物车</h1></v-head>
 	    </div>
 	    <div class="shopcar-list" v-for="(item,index) in shopcardata">
-	    	<div class="list-shop"><img src="@/assets/img/noselect.png" v-if="item.selected == false"><img src="@/assets/img/selected.png" v-if="item.selected == true"><span>{{item.shopname}}<img src="@/assets/img/right.png"></span><span>编辑</span></div>
+	    	<div class="list-shop"><img src="@/assets/img/noselect.png" v-if="item.selected == false" @click='selectall(item,index)'><img src="@/assets/img/selected.png" v-if="item.selected == true" @click='selectall(item,index)'><span>{{item.shopname}}<img src="@/assets/img/right.png"></span><span>编辑</span></div>
 	    	<el-row class="list-goods" v-for="(sitem,sindex) in item.shopdetail">
 		    	<el-col :span='2'>
-		    		<img src="@/assets/img/noselect.png" class="goods-select" v-if="sitem.goodsselected == false">
-		    		<img src="@/assets/img/selected.png" class="goods-select" v-if="sitem.goodsselected == true">
+		    		<img src="@/assets/img/noselect.png" class="goods-select" v-if="sitem.goodsselected == false" @click='selectone(index,sindex)'>
+		    		<img src="@/assets/img/selected.png" class="goods-select" v-if="sitem.goodsselected == true" @click='selectone(index,sindex)'>
 		    	</el-col>
 		    	<el-col :span='4'>
 		    		<img :src="sitem.goodsimg" class="goods-img">
@@ -25,6 +25,7 @@
 
 <script>
 	import Head from '@/common/head.vue';
+  import { Indicator } from 'mint-ui';
 		export default{
 		data(){
 			return{
@@ -86,6 +87,39 @@
 		components:{
 			    'v-head':Head,
 	    },
+      methods:{
+        //选择一个
+        selectone(index,sindex){
+          Indicator.open('加载中...');
+          setTimeout(function(){
+            Indicator.close();
+          },1000)
+           this.shopcardata[index].shopdetail[sindex].goodsselected = !this.shopcardata[index].shopdetail[sindex].goodsselected;
+           var selectedarr = [];
+           var truearr = [];
+           for (var i = 0; i < this.shopcardata[index].shopdetail.length; i++) {
+              selectedarr.push(this.shopcardata[index].shopdetail[i].goodsselected);
+              truearr.push(true);
+           }
+           console.log(selectedarr.toString())
+           if (selectedarr.toString() != truearr.toString()) {
+             this.shopcardata[index].selected = false;
+           }else{
+             this.shopcardata[index].selected = true;
+           }
+        },
+        //选择店铺所有
+        selectall(item,index){
+          Indicator.open('加载中...');
+          setTimeout(function(){
+            Indicator.close();
+          },1000)
+           this.shopcardata[index].selected = !this.shopcardata[index].selected;
+           for (var i = 0; i < this.shopcardata[index].shopdetail.length; i++) {
+             this.shopcardata[index].shopdetail[i].goodsselected = this.shopcardata[index].selected
+           }
+        }
+      }
 	}
 </script>
 
@@ -111,6 +145,8 @@
 			span:last-child{
 				float: right;
 				margin-right: 0.2rem;
+        font-weight: 550;
+        color: red;
 			}
 		}
 		.list-goods{

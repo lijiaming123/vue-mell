@@ -16,8 +16,8 @@
 		height: 8vh;
 		line-height: 8vh;
 		text-align: center;
-		position: absolute;
-		top: 0;
+		/*position: absolute;
+		top: 0;*/
 		font-size: 0.3rem;
 		border-bottom: 0.02rem solid #CCC;
 	}

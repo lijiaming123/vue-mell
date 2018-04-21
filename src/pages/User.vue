@@ -17,24 +17,34 @@
 </div>
 	<div class="user-order">
 		<div>
+			<router-link :to="{ name: '我的订单',params: {selected:'2'}}">
 			<img src="@/assets/img/obligations.png">
 			<span>待付款</span>
+			</router-link>
 		</div>
 		<div>
+			<router-link :to="{ name: '我的订单',params: {selected:'4'}}">
 			<img src="@/assets/img/consignment.png">
 			<span>代发货</span>
+			</router-link>
 		</div>
 		<div>
+			<router-link :to="{ name: '我的订单',params: {selected:'3'}}">
 			<img src="@/assets/img/dispatched.png">
 			<span>待收货</span>
+			</router-link>
 		</div>
 		<div>
+			<router-link :to="{ name: '我的订单',params: {selected:'1'}}">
 			<img src="@/assets/img/refund.png">
 			<span>退款/售后</span>
+			</router-link>
 		</div>
 		<div>
+			<router-link :to="{ name: '我的订单',params: {selected:'1'}}">
 			<img src="@/assets/img/allorder.png">
 			<span>全部订单</span>
+			 </router-link>
 		</div>
 	</div>
 	<div class="user-other">
@@ -43,6 +53,9 @@
 		<div><img src="@/assets/img/user-other/addr.png"><span>收货地址</span><img src="@/assets/img/right.png"></div>
 		<div><img src="@/assets/img/user-other/recode.png"><span>浏览记录</span><img src="@/assets/img/right.png"></div>
 		<div><img src="@/assets/img/user-other/concern.png"><span>我的关注</span><img src="@/assets/img/right.png"></div>
+	</div>
+	<div class="user-bottom">
+		<div @click="Logoff">退出登录</div>
 	</div>
 	<v-foot></v-foot>
     </div>
@@ -71,6 +84,16 @@ import Foot from '@/common/foot.vue';
       }
       this.userinfo = JSON.parse(user_info)
 	    },
+	    methods:{
+	    	//退出登录
+	    	Logoff(){
+               sessionStorage.removeItem('token');
+               sessionStorage.removeItem('user_info');
+               this.$router.push({
+               	 path: '/login'
+               })
+	    	}
+	    }
 	}
 </script>
 
@@ -80,7 +103,6 @@ import Foot from '@/common/foot.vue';
     }
     .user-card-bck{
     	background: #fff;
-    	margin-top: 8vh;
     	padding: 2vh 0;
     }
 	.user-card{

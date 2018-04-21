@@ -41,10 +41,16 @@ router.beforeEach((to, from, next) => {
        if (sessionStorage.getItem('token')) {
                 next()
        }else{
+        if (to.name == '购物车页') {
+           next({
+            path: '/visitorcar'
+           })
+        }else{
         next({
           path: '/login',
           // query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
         })
+      }
       }
     }else { //不需要权限 直接跳转
       next();
