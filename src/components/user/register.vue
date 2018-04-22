@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
 	<div class="register">
 		<v-header>
@@ -193,3 +194,6 @@
   	font-size: 0.3rem;
   }
 </style>
+=======
+register.vue
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27

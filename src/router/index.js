@@ -9,7 +9,10 @@ const More = resolve => require(['@/pages/More.vue'],resolve)//更多
 const Shopcar = resolve => require(['@/pages/Shopcar.vue'],resolve)//购物车
 const User = resolve => require(['@/pages/User.vue'],resolve);//用户
 const Login = resolve => require(['@/components/user/login.vue'],resolve);//登录
+<<<<<<< HEAD
 const Register = resolve => require(['@/components/user/register.vue'],resolve);//注册
+=======
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 const Myorder = resolve => require(['@/components/user/myorder.vue'],resolve);//我的订单
 const Visitor = resolve => require(['@/components/shopcar/visitor.vue'],resolve);//未登录状态下的购物车
 
@@ -46,10 +49,13 @@ export default new Router({
     name:'登录页',
     component:Login,
   },{
+<<<<<<< HEAD
     path:'/register',
     name:'注册页',
     component:Register,
   },{
+=======
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
     path:'/order',
     name:'我的订单',
     component:Myorder,

@@ -87,6 +87,7 @@
 		components:{
 			    'v-head':Head,
 	    },
+<<<<<<< HEAD
       created(){
           let shopcardata = sessionStorage.getItem('shopcardata')
           console.log(shopcardata)
@@ -94,6 +95,8 @@
             this.shopcardata = JSON.parse(shopcardata);
           }
       },
+=======
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
       methods:{
         //选择一个
         selectone(index,sindex){
@@ -114,7 +117,10 @@
            }else{
              this.shopcardata[index].selected = true;
            }
+<<<<<<< HEAD
            sessionStorage.setItem("shopcardata", JSON.stringify(this.shopcardata));
+=======
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
         },
         //选择店铺所有
         selectall(item,index){
@@ -126,7 +132,10 @@
            for (var i = 0; i < this.shopcardata[index].shopdetail.length; i++) {
              this.shopcardata[index].shopdetail[i].goodsselected = this.shopcardata[index].selected
            }
+<<<<<<< HEAD
            sessionStorage.setItem("shopcardata", JSON.stringify(this.shopcardata));
+=======
+>>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
         }
       }
 	}
