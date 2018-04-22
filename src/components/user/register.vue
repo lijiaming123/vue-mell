@@ -1,0 +1,195 @@
+<template>
+	<div class="register">
+		<v-header>
+			<h1 slot="title">注册</h1>
+		</v-header>
+		<div>
+<mt-index-list>
+	<mt-index-section :index="item.letters" v-for="item in phonedata">
+		<mt-cell :title="sitem.name" v-for="sitem in item.content">{{sitem.phone}}</mt-cell>
+	</mt-index-section>
+</mt-index-list>
+		</div>
+    <!-- <v-foot></v-foot> -->
+	</div>
+</template>
+
+<script>
+    	import Foot from '@/common/foot.vue';
+		import Header from '@/common/head.vue';
+	export default{
+        components:{
+				'v-foot':Foot,
+				'v-header':Header
+			},
+		data(){
+           return{
+           	  phonedata:[
+           	  	{
+           	  		letters:'A',content:[
+	           	  	{name:'阿尔巴尼亚',phone:'355'},
+	           	  	{name:'阿尔及利亚',phone:'213'},
+	           	  	{name:'阿富汗',phone:'93'},
+	           	  	{name:"阿根廷",phone:"54"},
+	           	  	{name:"阿鲁巴岛",phone:"297"},
+	           	  	{name:"阿曼",phone:"968"},
+	           	  	{name:"阿塞拜疆",phone:"994"},
+	           	  	{name:"阿森松(英)",phone:"247"},
+	           	  	{name:"埃及",phone:"20"},
+	           	  	{name:"埃塞俄比亚",phone:"251"},
+	           	  	{name:"爱尔兰",phone:"353"},
+	           	  	{name:"爱沙尼亚",phone:"372"},
+	           	  	{name:"安道尔",phone:"376"},
+	           	  	{name:"安哥拉",phone:"244"},
+	           	  	{name:"安圭拉岛(英)",phone:"1264"},
+	           	  	{name:"安提瓜和巴布达",phone:"1268"},
+	           	  	{name:"奥地利",phone:"43"},
+	           	  	{name:"澳大利亚",phone:"61"},
+	           	  	{name:"澳门",phone:"853"}]
+           	    },
+           	    {
+                    letters:'B',content:[
+                    {name:"巴巴多斯",phone:"1246"},  
+			        {name:"巴布亚新几内亚",phone:"675"},  
+			        {name:"巴哈马国",phone:"1242"},  
+			        {name:"巴基斯坦",phone:"92"},  
+			        {name:"巴拉圭",phone:"595"},  
+			        {name:"巴林",phone:"973"},  
+			        {name:"巴拿马",phone:"507"},  
+			        {name:"巴西",phone:"55"},  
+			        {name:"白俄罗斯",phone:"375"},  
+			        {name:"百慕大群岛(英)",phone:"1441"},  
+			        {name:"保加利亚",phone:"359"},  
+			        {name:"贝宁",phone:"229"},  
+			        {name:"比利时",phone:"32"},  
+			        {name:"冰岛",phone:"354"},  
+			        {name:"波多黎各(美)",phone:"1"},  
+			        {name:"波兰",phone:"48"},  
+			        {name:"波斯尼亚和黑塞哥维那",phone:"387"},  
+			        {name:"玻利维亚",phone:"591"},  
+			        {name:"伯利兹",phone:"501"},  
+			        {name:"博茨瓦纳",phone:"267"},  
+			        {name:"不丹",phone:"975"},  
+			        {name:"布基纳法索",phone:"226"},  
+			        {name:"布隆迪",phone:"257"}
+                    ]
+           	    },{
+           	    	letters:'C',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'D',content:[
+           	    	{name:"丹麦",phone:"45"},  
+			        {name:"德国",phone:"49"},  
+			        {name:"东萨摩亚(美)",phone:"1684"},  
+			        {name:"多哥",phone:"228"},  
+			        {name:"多米尼加共和国",phone:"1809"},  
+			        {name:"多米尼克国",phone:"1767"}  
+        			]
+           	    },{
+           	    	letters:'E',content:[
+           	    	{name:"俄罗斯",phone:"7"},  
+			        {name:"厄瓜多尔",phone:"593"},  
+			        {name:"厄立特里亚",phone:"291"} 
+        			]
+           	    },{
+           	    	letters:'F',content:[
+           	    	{name:"法国",phone:"33"},  
+			        {name:"法罗群岛(丹)",phone:"298"},  
+			        {name:"法属波里尼西亚",phone:"689"},  
+			        {name:"梵蒂冈",phone:"14397"},  
+			        {name:"菲律宾",phone:"63"},  
+			        {name:"斐济",phone:"679"},  
+			        {name:"芬兰",phone:"358"},  
+			        {name:"佛得角",phone:"238"},  
+			        {name:"福克兰群岛",phone:"500"}  
+        			]
+           	    },{
+           	    	letters:'G',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'H',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'J',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'K',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'L',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'M',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'N',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'P',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'R',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'S',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },
+           	    {
+           	    	letters:'T',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'W',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'X',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'Y',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },{
+           	    	letters:'Z',content:[
+           	    	{name:"朝鲜",phone:"850"},  
+        			{name:"赤道几内亚",phone:"240"},  
+        			]
+           	    },
+           	  ]
+           }
+		},
+		}
+</script>
+
+<style>
+  .register{
+  	font-size: 0.3rem;
+  }
+</style>
