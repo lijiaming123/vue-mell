@@ -35,7 +35,7 @@
 			</div>
 			<p class="tip">{{tip}}</p>
 			<div class="login-register">
-				<span>免费注册</span>
+				<span @click="$router.push({'path':'/register'})">免费注册</span>
 				<span>忘记密码</span>
 			</div>
 			<div class="login-sure" @click='Login'>
@@ -79,7 +79,7 @@
 						});
 						return
 					}
-	              this.axios.get('https://www.zhxnycbx.com/api/login',{
+	              this.axios.get('api/user/login',{
 	          		params:{
 	            	user:this.account,
 	            	pwd:this.password
