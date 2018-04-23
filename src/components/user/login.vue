@@ -1,81 +1,5 @@
 	<template>
 		<div class="login">
-<<<<<<< HEAD
-			<v-header>
-				<h1 slot="title">登录</h1>
-			</v-header>
-			<div class="login-content">
-				<div class="login-keyword" v-if='msgshow == false'>
-					<div>
-						<img src="../../assets/img/account.png" height="20" width="20">
-						<input type="" name="" placeholder="用户名/邮箱/手机号" v-model='account'>
-						<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="account!=''">
-					</div>
-				</div>
-				<div class="login-keyword" v-if='msgshow == false'>
-					<div>
-						<img src="../../assets/img/password.png" height="20" width="20">
-						<input type="password" name="" placeholder="请输入密码" v-model='password'>
-						<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="password!=''">
-					</div>
-				</div>
-				<div class="login-keyword" v-if='msgshow == true'>
-					<div>
-						<img src="../../assets/img/phone.png" height="20" width="20">
-						<input type="" name="" placeholder="请输入手机号" v-model='msgphone' class="phone-input">
-						<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="msgphone != ''">
-						<span class="phone-code" @click='Getcode'>获取验证码</span>
-					</div>
-				</div>
-				<div class="login-keyword" v-if='msgshow == true'>
-					<div>
-						<img src="../../assets/img/message.png" height="20" width="20">
-						<input type="" name="" placeholder="请输入短信验证码" v-model='msgpassword'>
-						<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="msgpassword != ''">
-					</div>
-				</div>
-				<p class="tip">{{tip}}</p>
-				<div class="login-register">
-					<span @click="$router.push({
-						path:'register'
-					})">免费注册</span>
-					<span>忘记密码</span>
-				</div>
-				<div class="login-sure" @click='Login'>
-					<span>登 录</span>
-				</div>
-				<div class="login-message" @click='msgLogin' v-if='msgshow==false'>
-					<span>短信验证码登录</span>
-				</div>
-				<div class="login-message" @click='commonLogin' v-if='msgshow==true'>
-					<span>账号密码登录</span>
-				</div>
-			</div>
-			<v-foot></v-foot>
-		</div>
-	</template>
-
-	<script>
-	import Foot from '@/common/foot.vue';
-	import Header from '@/common/head.vue';
-	import { Toast } from 'mint-ui';
-	export default{
-		components:{
-			'v-foot':Foot,
-			'v-header':Header
-		},
-		data(){
-			return{
-				account:'',
-				password:'',
-				msgpassword:'',
-				msgphone:'',
-				msgshow:false,
-	             tip:''//登录提示
-	         }
-	     },
-	     methods:{
-=======
 		<v-header>
 			<h1 slot="title">登录</h1>
 		</v-header>
@@ -127,7 +51,6 @@
 		<v-foot></v-foot>
 	    </div>
 	</template>
-
 	<script>
 		import Foot from '@/common/foot.vue';
 		import Header from '@/common/head.vue';
@@ -148,47 +71,10 @@
 				}
 			},
 			methods:{
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 				//登录
 				Login(){
 					if (this.account == ''||this.password=='') {
 						Toast({
-<<<<<<< HEAD
-							message: '请输入账号或密码',
-						});
-						return
-					}
-					this.axios.get('https://www.zhxnycbx.com/api/login',{
-						params:{
-							user:this.account,
-							pwd:this.password
-						}
-					}).then((res) => {
-						console.log(res.data)
-						if (res.data.status == '200') {
-							sessionStorage.setItem("token", res.data.token);
-							sessionStorage.setItem("user_info", JSON.stringify(res.data.data));
-							setTimeout(()=>{
-								this.$router.replace({
-									path: 'user'
-								})
-							},1000);
-						}else{
-							this.tip = res.data.msg;
-							setTimeout(()=>{
-								this.tip = ''
-							},2000)
-						}
-					}
-					).catch(error => {
-						console.log(error);
-					});
-				},
-					//短信验证码登录
-					msgLogin(){
-						this.msgshow = true;
-					},
-=======
   							message: '请输入账号或密码',
 						});
 						return
@@ -223,32 +109,26 @@
 				msgLogin(){
 					this.msgshow = true;
 				},
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 				//账号密码登录
 				commonLogin(){
 					this.msgshow = false;
 				},
 				//获取短信验证码
 				Getcode(){
-
 				},
 			}
 		}
-<<<<<<< HEAD
 		</script>
 
 		<style>
 		.login{
 			font-size: 0.3rem;
 		}
-=======
 	</script>
-
 	<style>
 	    .login{
 	    	font-size: 0.3rem;
 	    }
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 		.login-content{
 			margin-top: 20vh;
 		}
@@ -275,7 +155,6 @@
 			margin-left: 15vw;
 		}
 		.login-keyword input{
-<<<<<<< HEAD
 			border-bottom: 0.02rem solid black;
 			width: 60vw;
 			font-size: 0.28rem;
@@ -284,7 +163,6 @@
 			width: 0.3rem; 
 			height: 0.3rem; 
 			margin: -0.02rem 0 0 -0.4rem; 
-=======
 	        border-bottom: 0.02rem solid black;
 	        width: 60vw;
 	        font-size: 0.28rem;
@@ -293,7 +171,6 @@
 		    width: 0.3rem; 
 		    height: 0.3rem; 
 		    margin: -0.02rem 0 0 -0.4rem; 
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 		}
 		.login-register,.login-sure,.login-message{
 			width: 70vw;
@@ -303,11 +180,8 @@
 			font-size: 0.24rem;
 		}
 		.login-register span:last-child{
-<<<<<<< HEAD
 			float: right;
-=======
 	        float: right;
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
 		}
 		.login-sure{
 			height: 6vh;
@@ -327,8 +201,4 @@
 			margin-top: 1vh;
 			color: red;
 		}
-<<<<<<< HEAD
 		</style>
-=======
-	</style>
->>>>>>> 26618745b126fc5dbf4b1b56cb8228b1a0cfdf27
