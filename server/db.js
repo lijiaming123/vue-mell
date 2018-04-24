@@ -5,10 +5,10 @@ const initCarts = require('./initCarts.json')
 
 // 用户信息的数据结构模型
 const userSchema = new Schema({
-  name: {type: String},
-  pwd: {type: String},
-  time: {type: Date, default: Date.now}
-})
+  account: {type: String},
+  password: {type: String},
+  detail:Object
+}, { timestamps: true })
 // 商品的的数据结构模型
 const goodsSchema = new Schema({
   brand_id: Number,
@@ -19,7 +19,7 @@ const goodsSchema = new Schema({
   brand_price: Number,
   brand_desc: String,
   brand_pic: String
-})
+},  { timestamps: true })
 // 购物车的的数据结构模型
 const cartsSchema = new Schema({
   name: String,
@@ -31,7 +31,7 @@ const cartsSchema = new Schema({
   brand_pic: String,
   cart_num: Number,
   cart_isSelect: Boolean
-});
+},  { timestamps: true });
 
 mongoose.Promise = global.Promise;
 const database = mongoose.connect('mongodb://127.0.0.1:27017/vuemall')
@@ -68,7 +68,6 @@ const initData = function () {
       console.log('db open not first time');
     }
   })
-  // 为用户name15011760730初始化购物车内容
   db.cartsModel.find({}, function(err, doc){
     if (err) {
       console.log('initData出错：' + err);

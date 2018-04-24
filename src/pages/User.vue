@@ -9,9 +9,10 @@
 	<div class="user-card">
 		<img src="@/assets/img/boy.png">
 		<ul>
-			<li>{{userinfo.name}}</li>
-			<li>{{userinfo.user}}</li>
-			<li><span>会员等级：{{userinfo.level}}</span><span>积分:{{userinfo.credit}}</span></li>
+			<li><span>{{userinfo.userName}}</span></li>
+			<li><span>{{userinfo.age}}</span></li>
+			<li><span>会员等级：{{userinfo.level}}</span></li>
+			<li><span>积分:{{userinfo.credit}}</span></li>
 		</ul>
 	</div>
 </div>
@@ -117,9 +118,11 @@ import Foot from '@/common/foot.vue';
 			margin-top: 0.5rem;
 			margin-left: 0.4rem;
 			display: inline-block;
+			vertical-align: top;
 		}
 		ul{
-			vertical-align: bottom;
+			vertical-align: middle;
+			margin-top: 20px;
 			margin-left: 0.2rem;
 			display: inline-block;
 		}

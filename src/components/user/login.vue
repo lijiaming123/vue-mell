@@ -81,14 +81,14 @@
 					}
 	              this.axios.get('api/user/login',{
 	          		params:{
-	            	user:this.account,
-	            	pwd:this.password
+	            	account:this.account,
+	            	password:this.password
 	          		}
 	        		}).then((res) => {
 	          		console.log(res.data)
-                    if (res.data.status == '200') {
-                    	sessionStorage.setItem("token", res.data.token);
-            			sessionStorage.setItem("user_info", JSON.stringify(res.data.data));
+                    if (res.data.code == '200') {
+                    	sessionStorage.setItem("token", res.data.code);
+            			sessionStorage.setItem("user_info", JSON.stringify(res.data.body));
 		               setTimeout(()=>{
 			              this.$router.replace({
 			                path: 'user'

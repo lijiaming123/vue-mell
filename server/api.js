@@ -24,33 +24,36 @@ module.exports = function (app) {
   // api login
   app.get('/api/user/login', function (req, res) {
     // 对发来的登录数据进行验证
-    if (!req.query.name) {
+    if (!req.query.account) {
       // res.writeHead('Access-Control-Allow-Origin', '*');
       // res.writeHead('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild, x-access-token');
       // res.writeHead('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
       // res.writeHead('Access-Control-Allow-Credentials', 'true');
-      res.json({code: 600, msg:'name 不能为空！'})
+      res.json({code: 600, msg:'账号不能为空！'})
       return
     }
-    if (!req.query.pwd) {
-      res.json({code: 600, msg:'pwd 不能为空！'})
+    if (!req.query.password) {
+      res.json({code: 600, msg:'密码不能为空！'})
       return
     }
-    db.userModel.findOne({name: req.query.name}, function(err, doc){
+    db.userModel.findOne({account: req.query.account}, function(err, doc){
       if (err) {
         console.log('查询出错：' + err);
         res.json({code: 700, msg:'查询出错：' + err})
         return
       } else {
+        console.log(doc)
         if (!doc) {
-          res.json({code: 700, msg:'不存在该用户名：' + req.query.name})
+          res.json({code: 700, msg:'不存在该用户名：' + req.query.account})
           return
         } else {
-          if (req.query.pwd != doc.pwd) {
+          console.log(req.query.password)
+          console.log(doc.detail)
+          if (req.query.password != doc.password) {
             res.json({code: 700, msg:'密码不正确！'})
             return
           } else {
-            res.json({code: 200, msg:'密码正确，登录成功'})
+            res.json({code: 200, msg:'密码正确，登录成功',body:doc.detail})
             return
           }
         }
