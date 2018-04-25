@@ -93,8 +93,22 @@
           if (shopcardata != null) {
             this.shopcardata = JSON.parse(shopcardata);
           }
+          this.getShopcar();
       },
       methods:{
+        //获取用户购物车信息
+        getShopcar(){
+            this.axios.get('api/user/shopcar',{
+                params:{
+                account:'lijiaming',
+                }
+              }).then((res) => {
+                console.log(res.data)
+                }
+          ).catch(error => {
+                console.log(error);
+              });
+        },
         //选择一个
         selectone(index,sindex){
           Indicator.open('加载中...');
