@@ -49,7 +49,8 @@ module.exports = function (app) {
           res.json({code: 700, msg:'不存在该用户名：' + req.query.account})
           return
         } else {
-          console.log(req.query.password)
+          console.log(typeof(req.query.password))
+          console.log(typeof(doc.password))
           if (req.query.password != doc.password) {
             res.json({code: 700, msg:'密码不正确！'})
             return
@@ -65,8 +66,8 @@ module.exports = function (app) {
   // 注册
   app.get('/api/user/register', function (req, res) {
     // 对发来的注册数据进行验证
-    let name = req.query.name
-    let pwd = req.query.pwd
+    let name = req.query.account;
+    let pwd = req.query.password;
     if (!name) {
       res.json({code: 600, msg:'name 不能为空！'})
       return
@@ -77,7 +78,7 @@ module.exports = function (app) {
     }
     // 查询数据库验证注册账号、密码
     // 是否存在账号
-    db.userModel.findOne({name: req.query.name}, function(err, doc){
+    db.userModel.findOne({account: name}, function(err, doc){
       if (err) {
         console.log('查询出错：' + err);
         res.json({code: 700, msg:'查询出错：' + err})
@@ -88,13 +89,13 @@ module.exports = function (app) {
           return
         } else {
           db.userModel.create({
-            name: name,
-            pwd: pwd
+            account: name,
+            password: pwd
           }, function (err, doc) {
             if (err) {
               res.end('注册失败:' + err)
             } else {
-              res.json({code: 200, msg:'用户注册成功：' + name})
+              res.json({code: 200, msg:'用户注册成功：' ,body:doc})
               return
             }
           })

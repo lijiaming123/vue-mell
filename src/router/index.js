@@ -12,6 +12,7 @@ const Login = resolve => require(['@/components/user/login.vue'],resolve);//登�
 const Register = resolve => require(['@/components/user/register.vue'],resolve);//注册
 const Myorder = resolve => require(['@/components/user/myorder.vue'],resolve);//我的订单
 const Visitor = resolve => require(['@/components/shopcar/visitor.vue'],resolve);//未登录状态下的购物车
+const Country = resolve => require(['@/components/user/country.vue'],resolve);//选择国家
 
 export default new Router({
   routes: [
@@ -40,7 +41,7 @@ export default new Router({
     component:User,
     meta: {
          requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
-       },
+       }
   },{
     path:'/login',
     name:'登录页',
@@ -49,6 +50,10 @@ export default new Router({
     path:'/register',
     name:'注册页',
     component:Register,
+  },{
+    path:'/country',
+    name:'选择国家和地区',
+    component:Country
   },{
     path:'/order',
     name:'我的订单',

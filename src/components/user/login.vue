@@ -120,12 +120,7 @@
 		}
 		</script>
 
-		<style>
-		.login{
-			font-size: 0.3rem;
-		}
-	</script>
-	<style>
+		<style scoped>
 	    .login{
 	    	font-size: 0.3rem;
 	    }

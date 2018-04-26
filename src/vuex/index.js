@@ -14,7 +14,7 @@ const state = {
 const mutations = {
 	['SET_ACTIVEINDEX'](state,res){
 		state.activeindex = res;
-	}
+	},
 }
 
 export default new Vuex.Store({

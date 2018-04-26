@@ -9,7 +9,7 @@
 	<div class="user-card">
 		<img src="@/assets/img/boy.png">
 		<ul>
-			<li><span>{{userinfo.userName}}</span></li>
+			<li><span v-if="userinfo.userName">{{userinfo.userName}}</span><span v-else>{{userinfo._id}}</span></li>
 			<li><span>{{userinfo.age}}</span></li>
 			<li><span>会员等级：{{userinfo.level}}</span></li>
 			<li><span>积分:{{userinfo.credit}}</span></li>
