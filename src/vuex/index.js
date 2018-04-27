@@ -9,6 +9,7 @@ Vue.use(Vuex) // this.$store对象
 
 const state = {
 	activeindex : 0,//这是记住点击路由的颜色改变
+	categorybigclass:[],//这是记住大类
 }
 
 const mutations = {

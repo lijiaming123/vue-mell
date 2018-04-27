@@ -13,7 +13,7 @@
 			<!-- 左边栏 -->
 			<div class="outer-container">
 			<ul class="category-aside">
-				<li v-for="(item,index) in category" :class="{asideactive:activeindex==index,asideli:activeindex!=index}" @click="Getdetail(index)">{{item.name}}</li>
+				<li v-for="(item,index) in category" :class="{asideactive:activeindex==index,asideli:activeindex!=index}" @click="Getdetail(index)">{{item.bigclassname}}</li>
 			</ul>
 		    </div>
 		</div>
@@ -29,30 +29,28 @@
 		},
 		data(){
 			return{
-				category:[
-                {name:'手机数码',detail:[]},
-                {name:'家用电器',detail:[]},
-                {name:'电脑办公',detail:[]},
-                {name:'日常生活',detail:[]},
-                {name:'汽车用品',detail:[]},
-                {name:'鞋子服装',detail:[]},
-                {name:'手机数码',detail:[]},
-                {name:'家用电器',detail:[]},
-                {name:'电脑办公',detail:[]},
-                {name:'日常生活',detail:[]},
-                {name:'汽车用品',detail:[]},
-                {name:'鞋子服装',detail:[]},
-                {name:'手机数码',detail:[]},
-                {name:'家用电器',detail:[]},
-                {name:'电脑办公',detail:[]},
-                {name:'日常生活',detail:[]},
-                {name:'汽车用品',detail:[]},
-                {name:'鞋子服装',detail:[]},
-				],
+				category:this.$store.state.categorybigclass,
 				activeindex:0,
 			}
 		},
+		created(){
+            this.getBigclass();
+		},
 		methods:{
+			//获取大类
+			getBigclass(){
+               if (this.category.length > 0) {
+               	  return
+               }else{
+           this.axios.get('api/bigclass').then((res) => {
+	          		console.log(res.data)
+	          		this.$store.state.categorybigclass = res.data.body
+	          		}
+					).catch(error => {
+	          		console.log(error);
+	        		});
+				}
+			},
 			Getdetail(index){
                this.activeindex = index;
 			}
@@ -68,11 +66,11 @@
 		position: relative;
 		overflow: hidden;
 		width: 30vw;
-	    height: 84vh;
+		overflow-y: scroll;
+	    height: 83vh;
 	}
 	.category-aside{
 		width: 30vw;
-		height: 87.5vh;
 		overflow-y: scroll;
 		overflow-x: hidden;
 		position: absolute;
