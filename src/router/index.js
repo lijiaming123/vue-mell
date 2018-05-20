@@ -13,6 +13,7 @@ const Register = resolve => require(['@/components/user/register.vue'],resolve);
 const Myorder = resolve => require(['@/components/user/myorder.vue'],resolve);//我的订单
 const Visitor = resolve => require(['@/components/shopcar/visitor.vue'],resolve);//未登录状态下的购物车
 const Country = resolve => require(['@/components/user/country.vue'],resolve);//选择国家
+const Addr = resolve => require(['@/components/user/addr.vue'],resolve);//收货地址
 
 export default new Router({
   routes: [
@@ -54,6 +55,10 @@ export default new Router({
     path:'/country',
     name:'选择国家和地区',
     component:Country
+  },{
+    path:'/addr',
+    name:'收货地址',
+    component:Addr
   },{
     path:'/order',
     name:'我的订单',

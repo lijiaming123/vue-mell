@@ -31,6 +31,10 @@ const bigclassSchema = new Schema({
 	bigclassid:String,
 	bigclassname:String
 })
+const addrSchema = new Schema({
+	name:String,
+	account:String
+})
 mongoose.Promise = global.Promise;
 const database = mongoose.connect('mongodb://127.0.0.1:27017/vuemall')
 database.connection.on('error', function(error){
@@ -46,7 +50,8 @@ const db = {
   userModel: database.model('userModel', userSchema),
   goodsModel: database.model('goodsModel', goodsSchema),
   shopcarModel : database.model('shopcarModel',shopcarSchema),
-  bigclassModel : database.model('bigclassModel',bigclassSchema)
+  bigclassModel : database.model('bigclassModel',bigclassSchema),
+  addrModel : database.model('addrModel',addrSchema)
 }
 
 module.exports = db

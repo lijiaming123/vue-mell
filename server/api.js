@@ -42,7 +42,7 @@ module.exports = function (app) {
 
       }
     })
-  })
+  });
   // 注册
   app.get('/api/user/register', function (req, res) {
     // 对发来的注册数据进行验证
@@ -85,7 +85,7 @@ module.exports = function (app) {
     })
     // 返回注册状态
     // res.send(JSON.stringify({code: 200, data: {account: 'guojcres', pass: 111111}}))
-  })
+  });
   //获取购物车信息
     app.get('/api/user/shopcar', function (req, res) {
     // 对发来的登录数据进行验证
@@ -113,13 +113,31 @@ module.exports = function (app) {
 
       }
     })
-  })
+  });
     app.get('/api/bigclass',function(req,res){
       db.bigclassModel.find(function(err,doc){
         res.json({code:200,msg:'查询成功',body:doc})
       })
+    });
+  app.get('/api/addr',function(req,res){
+
+    db.addrModel.find({account:req.query.account},function(err,doc){
+       if (err) {
+        console.log('查询出错：' + err);
+        res.json({code: 700, msg:'查询出错：' + err})
+        return
+      } else {
+        console.log(doc)
+        if (!doc) {
+          return
+        } else {
+            res.json({code: 200, msg:'查询成功',body:doc})
+            return
+        }
+      }
     })
-  app.get('*', function(req, res){
+  });
+    app.get('*', function(req, res){
     res.end('404')
-  })
+  });
 }

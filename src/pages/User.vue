@@ -51,7 +51,7 @@
 	<div class="user-other">
 		<div><img src="@/assets/img/user-other/coupon.png"><span>优惠券</span><img src="@/assets/img/right.png"></div>
 		<div><img src="@/assets/img/user-other/assets.png"><span>我的资产</span><img src="@/assets/img/right.png"></div>
-		<div><img src="@/assets/img/user-other/addr.png"><span>收货地址</span><img src="@/assets/img/right.png"></div>
+		<div @click="goToaddr"><img src="@/assets/img/user-other/addr.png"><span>收货地址</span><img src="@/assets/img/right.png"></div>
 		<div><img src="@/assets/img/user-other/recode.png"><span>浏览记录</span><img src="@/assets/img/right.png"></div>
 		<div><img src="@/assets/img/user-other/concern.png"><span>我的关注</span><img src="@/assets/img/right.png"></div>
 	</div>
@@ -93,7 +93,14 @@ import Foot from '@/common/foot.vue';
                this.$router.push({
                	 path: '/login'
                })
-	    	}
+	    	},
+	    	//进入收货地址
+	    	goToaddr(){
+	    		console.log(1)
+               this.$router.push({
+               	 path: '/addr'
+               })
+	    	},
 	    }
 	}
 </script>
