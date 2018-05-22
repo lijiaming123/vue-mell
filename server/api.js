@@ -1,6 +1,8 @@
 const db = require('./db')
-
 module.exports = function (app) {
+  var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
   app.all("*", function(req, res, next) {
 
     next();
@@ -44,10 +46,10 @@ module.exports = function (app) {
     })
   });
   // 注册
-  app.get('/api/user/register', function (req, res) {
+  app.post('/api/user/register', function (req, res) {
     // 对发来的注册数据进行验证
-    let name = req.query.account;
-    let pwd = req.query.password;
+    let name = req.body.account;
+    let pwd = req.body.password;
     if (!name) {
       res.json({code: 600, msg:'name 不能为空！'})
       return
@@ -114,13 +116,14 @@ module.exports = function (app) {
       }
     })
   });
+    //获取分类
     app.get('/api/bigclass',function(req,res){
       db.bigclassModel.find(function(err,doc){
         res.json({code:200,msg:'查询成功',body:doc})
       })
     });
+    //获取地址
   app.get('/api/addr',function(req,res){
-
     db.addrModel.find({account:req.query.account},function(err,doc){
        if (err) {
         console.log('查询出错：' + err);
@@ -137,6 +140,44 @@ module.exports = function (app) {
       }
     })
   });
+  //新增地址
+  app.post('/api/addaddr',function(req,res){
+          // var count = 0
+    db.addrModel.find({},function(err,doc){
+      // console.log(doc.length)
+      // count = doc.length + 1
+      // console.log(count);
+      db.addrModel.create({
+            account: req.body.account,
+            name:req.body.name,
+            tel:req.body.tel,
+            address:req.body.address,
+            address_detail:req.body.address_detail,
+            province : req.body.province,
+            city: req.body.city,
+            county : req.body.county,
+            postal_code : req.body.postal_code,
+            default : req.body.default,
+            area_code : req.body.area_code
+          }, function (err, doc) {
+            if (err) {
+              res.end('注册失败:' + err)
+            } else {
+              res.json({code: 200, msg:'新增地址成功：',body:doc})
+              return
+            }
+          })
+    });
+  });
+  //修改地址
+    app.post('/api/editaddr',function(req,res){
+      var mongoose = require('mongoose');  
+      var id = mongoose.Types.ObjectId(req.body._id); 
+      console.log(id)
+      db.addrModel.findOne({_id:id},function(err,doc){
+        console.log(doc)
+      })
+    })
     app.get('*', function(req, res){
     res.end('404')
   });

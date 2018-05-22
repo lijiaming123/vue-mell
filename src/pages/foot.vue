@@ -49,6 +49,14 @@
     methods: {
       gotoroute(item,index){
       	this.$store.state.activeindex = index;
+        if (item.router == '用户页') {
+            this.$router.push({
+                name: '登录页'
+            })
+            console.log(1)
+            return
+        }
+        console.log(1)
       	this.$router.push({ 
           name: item.router
         })

@@ -87,7 +87,7 @@
 	        		}).then((res) => {
 	          		console.log(res.data)
                     if (res.data.code == '200') {
-                    	sessionStorage.setItem("token", res.data.code);
+                    	sessionStorage.setItem("token", res.data.body._id);
             			sessionStorage.setItem("user_info", JSON.stringify(res.data.body));
 		               setTimeout(()=>{
 			              this.$router.replace({

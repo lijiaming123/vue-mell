@@ -52,11 +52,9 @@
                   duration: 1000
                 });
              }
-             this.axios.get('api/user/register',{
-                params:{
+             this.axios.post('api/user/register',{
                 account:this.mobilephone,
                 password:this.password
-                }
               }).then((res) => {
                 console.log(res.data)
                 }

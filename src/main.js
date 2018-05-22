@@ -14,15 +14,29 @@ import 'mint-ui/lib/style.css'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 Vue.use(Vant);
-
 Vue.use(ElementUI)
 Vue.use(MintUI)
-
+// const api = axios.create();
 Vue.config.productionTip = false
 axios.defaults.timeout = 5000//不能超过5秒
 Vue.prototype.axios = axios//注册全局的axios
+// api.interceptors.request.use(function (config) {
+//     // 在发送请求之前做些什么
+//     store.commit('UPDATE_ROUTER_LOADING',true);
+//   }, function (error) {
+//     // 对请求错误做些什么
+
+//   });
+// api.interceptors.response.use(function (response) {
+//     // 对响应数据做点什么
+//     store.commit('UPDATE_ROUTER_LOADING',true);
+//   }, function (error) {
+//     // 对响应错误做点什么
+//     return Promise.reject(error);
+//   });
 
 router.beforeEach((to, from, next) => {
+    store.commit('UPDATE_ROUTER_LOADING',true)
     console.log(to)
     console.log(router)
     if (to.name == '首页') {
@@ -59,7 +73,13 @@ router.beforeEach((to, from, next) => {
       next();
     }
 })
-
+router.afterEach((to,from,next) => {
+  store.commit('UPDATE_ROUTER_LOADING',false)
+});
+router.onError(error => {
+  console.log(error);
+  store.commit('UPDATE_ROUTER_LOADING',false)
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

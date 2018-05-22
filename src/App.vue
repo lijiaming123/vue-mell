@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view v-loading="$store.state.routerloading"></router-view>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ html,body,#app{
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   background: #f6f6f6;
+  font-size: 0.3rem;
 }
 
 body,

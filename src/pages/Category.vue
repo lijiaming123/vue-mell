@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-loading="loading">
 		<div class="category-top">
 			<img src="../assets/img/back.png" height="20" width="20">
 			<div class="search">
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-	import Foot from '../common/foot.vue'
+	import Foot from '../common/foot.vue';
+	import { Toast } from 'vant';
 	export default {
 		components:{
 			'v-foot':Foot
@@ -31,6 +32,7 @@
 			return{
 				category:this.$store.state.categorybigclass,
 				activeindex:0,
+				loading:false,
 			}
 		},
 		created(){
@@ -45,6 +47,7 @@
            this.axios.get('api/bigclass').then((res) => {
 	          		console.log(res.data)
 	          		this.$store.state.categorybigclass = res.data.body
+	          		this.category = res.data.body;
 	          		}
 					).catch(error => {
 	          		console.log(error);

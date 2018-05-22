@@ -14,6 +14,8 @@ const Myorder = resolve => require(['@/components/user/myorder.vue'],resolve);//
 const Visitor = resolve => require(['@/components/shopcar/visitor.vue'],resolve);//未登录状态下的购物车
 const Country = resolve => require(['@/components/user/country.vue'],resolve);//选择国家
 const Addr = resolve => require(['@/components/user/addr.vue'],resolve);//收货地址
+const Newaddr = resolve => require(['@/components/user/newaddr.vue'],resolve);//新增收货地址
+const Editaddr = resolve => require(['@/components/user/editaddr.vue'],resolve);//新增收货地址
 
 export default new Router({
   routes: [
@@ -58,7 +60,24 @@ export default new Router({
   },{
     path:'/addr',
     name:'收货地址',
-    component:Addr
+    component:Addr,
+        meta: {
+         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+       }
+  },{
+    path:'/newaddr',
+    name:'新增地址',
+    component:Newaddr,
+        meta: {
+         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+       }
+  },{
+    path:'/editaddr',
+    name:'编辑地址',
+    component:Editaddr,
+    meta: {
+         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+    }
   },{
     path:'/order',
     name:'我的订单',

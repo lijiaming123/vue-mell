@@ -1,32 +1,19 @@
 <template>
-	<div>
-		<v-head div v-show="type==''">
+	<div class="addr">
+		<v-head div>
 			<h1 slot="title">地址管理</h1>
 		</v-head>
-		<v-head div v-show="type=='edit'">
-			<h1 slot="title">编辑地址</h1>
-		</v-head>
-		<v-head div v-show="type=='add'">
-			<h1 slot="title">新增地址</h1>
-		</v-head>
-	<van-address-list v-show="type==''"
+	<van-address-list
 		  v-model="chosenAddressId"
 		  :list="addrlist"
 		  @add="onAdd"
 		  @edit="onEdit"
 		/>
-		<div class="addr-edit" v-show="type=='edit'">
-			<van-address-edit
-  :area-list="areaList"
-  :search-result="searchResult"
-  @change-detail="onChangeDetail"
-/>
-		</div>
 		</div>
 </template>
 
 <script>
-
+import addrlist from '../../../static/area.js';
 import Head from '@/common/head.vue';
 	export default {
 		components:{
@@ -34,11 +21,9 @@ import Head from '@/common/head.vue';
 	    },
   data() {
     return {
-      type:'',
-      chosenAddressId: '1',
-      addrlist: [
-      ],
-      areaList:{},
+      chosenAddressId: 1,
+      addrlist: [],
+      areaList:addrlist,
       searchResult: []
     }
   },
@@ -47,21 +32,31 @@ import Head from '@/common/head.vue';
 	    	   	params:{
 	    	   		account:'lijiaming'
 	    	   	}
-	    	   }).then((res) => {
-	          		console.log(res.data.body)
-	          		this.addrlist = res.data.body
-	          		console.log(this.addrlist)
+	    	    }).then((res) => {
+	          		console.log(res.data.body);
+	          		this.addrlist = res.data.body;
+	          		for (var i = 0; i < this.addrlist.length; i++) {
+	          			this.addrlist[i].id = this.addrlist[i]._id;
+	          		}
+	          		this.chosenAddressId = this.addrlist[0]._id;
+	          		console.log(this.addrlist);
 	          		}
 					).catch(error => {
 	          		console.log(error);
-	        		});
+	        	});
   },
   methods: {
     onAdd() {
-      this.type = 'add'
+      this.$router.push({
+      	path:'/newaddr'
+      })
     },
     onEdit(item, index) {
-      this.type = 'edit'
+    	console.log(item)
+      this.$router.push({
+      	path:'/editaddr',
+      });
+      this.$store.commit('EDIT_ADDR',item)
     },
     onChangeDetail(val) {
       if (val) {
@@ -78,5 +73,7 @@ import Head from '@/common/head.vue';
 </script>
 
 <style lang="less" scoped>
-	
+	.addr{
+
+	}
 </style>
