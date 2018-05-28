@@ -1,5 +1,5 @@
 <template>
-	<div class="login">
+	<div class="head">
 	    <img src="@/assets/img/back.png" @click="$router.go(-1)">
 	    <slot name="title"></slot>
 	</div>
@@ -9,8 +9,8 @@
 	
 </script>
 
-<style scoped>
-	.login{
+<style lang="less" scoped>
+	.head{
 		width: 100vw;
 		background-color: rgb(246,248,250);
 		height: 8vh;
@@ -20,12 +20,12 @@
 		top: 0;*/
 		font-size: 0.3rem;
 		border-bottom: 0.02rem solid #CCC;
-	}
-	.login img{
+		img{
 		margin-left: 3vw;
 		margin-top: 2vh;
 		height: 4vh;
 		width: 8vw;
 		float: left;
+		}
 	}
 </style>

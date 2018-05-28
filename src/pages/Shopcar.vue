@@ -3,9 +3,10 @@
 		<div class="shopcar-title">
 		<v-head><h1 slot="title">购物车</h1></v-head>
 	    </div>
-	    <div class="shopcar-list" v-for="(item,index) in shopcardata">
+      <div class="shopcar-content">
+	    <div class="shopcar-list" v-for="(item,index) in shopcardata" :key="index">
 	    	<div class="list-shop"><img src="@/assets/img/noselect.png" v-if="item.selected == false" @click='selectall(item,index)'><img src="@/assets/img/selected.png" v-if="item.selected == true" @click='selectall(item,index)'><span>{{item.shopname}}<img src="@/assets/img/right.png"></span><span>编辑</span></div>
-	    	<el-row class="list-goods" v-for="(sitem,sindex) in item.shopdetail">
+	    	<el-row class="list-goods" v-for="(sitem,sindex) in item.shopdetail" :key="sindex">
 		    	<el-col :span='2'>
 		    		<img src="@/assets/img/noselect.png" class="goods-select" v-if="sitem.goodsselected == false" @click='selectone(index,sindex)'>
 		    		<img src="@/assets/img/selected.png" class="goods-select" v-if="sitem.goodsselected == true" @click='selectone(index,sindex)'>
@@ -20,6 +21,10 @@
 		    	</el-col>
 	    	</el-row>
 	    </div>
+    </div>
+      <van-submit-bar :price="3050" button-text="去结算"/>
+        
+      </van-submit-bar>
 	</div>
 </template>
 
@@ -149,12 +154,18 @@
 <style lang="less" scoped>
     .shopcar{
     	font-size: 0.3rem;
+      overflow:auto;
+      height:100vh;
     }
     .shopcar-title{
     	height: 8vh;
     }
+  .shopcar-content{
+    height:calc(92%-50px);
+    width: 100vw;
+    overflow:auto;
 	.shopcar-list{
-		margin-top: 2vh;
+		margin-bottom: 2vh;
 		background: #fff;
 		.list-shop{
 			height: 6vh;
@@ -197,5 +208,6 @@
             	}
             }
 		}
+  }
 	}
 </style>

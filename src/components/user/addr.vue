@@ -51,23 +51,14 @@ import Head from '@/common/head.vue';
       	path:'/newaddr'
       })
     },
+    //编辑
     onEdit(item, index) {
     	console.log(item)
       this.$router.push({
-      	path:'/editaddr',
+      	path:'/editaddr/' + item._id,
       });
       this.$store.commit('EDIT_ADDR',item)
     },
-    onChangeDetail(val) {
-      if (val) {
-        this.searchResult = [{
-          name: '黄龙万科中心',
-          address: '杭州市西湖区'
-        }];
-      } else {
-        this.searchResult = [];
-      }
-    }
   }
 }
 </script>

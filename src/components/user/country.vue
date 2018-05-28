@@ -1,12 +1,13 @@
 <template>
 	<div class="country">
-		<v-header>
-			<h1 slot="title">选择国家和地区</h1>
-		</v-header>
+		<div class="login">
+      <img src="@/assets/img/back.png" @click="backRegister">
+      选择国家和地区
+  </div>
 	<div>
 		<mt-index-list>
-			<mt-index-section :index="item.letters" v-for="item in phonedata">
-				<mt-cell :title="sitem.name" v-for="(sitem,sindex) in item.content" @click.native="selectPhone(sitem)" :key="sindex" :class="{active:selectphone==sitem.phone}">{{sitem.phone}}</mt-cell>
+			<mt-index-section :index="item.letters" v-for="(item,index) in phonedata" :key="index">
+				<mt-cell :title="sitem.name" v-for="(sitem,sindex) in item.content" @click.native="selectPhone(sitem)" :key="sindex" :class="{active:selectphone==sitem.phone}" style="margin-right:0.6rem"><span>+{{sitem.phone}}</span></mt-cell>
 			</mt-index-section>
 		</mt-index-list>
 		</div>
@@ -22,6 +23,16 @@
 	    data(){
 	    	return{
 	    		phonedata:[
+                {
+                  letters:'热门',content:[
+                  {name:'中国',phone:'86'},
+                  {name:'中国香港',phone:'852'},
+                  {name:'中国澳门',phone:'853'},
+                  {name:'中国台湾',phone:'886'},
+                  {name:'新加坡',phone:'65'},
+                  {name:'美国',phone:'1'}
+                  ]
+                },
            	  	{
            	  		letters:'A',content:[
 	           	  	{name:'阿尔巴尼亚',phone:'355'},
@@ -310,7 +321,7 @@
         			]
            	    },
            	  ],
-           	  selectphone:''
+           	  selectphone:'86'
 	    	}
 	    },
 	    methods:{
@@ -319,15 +330,37 @@
              this.selectphone = i.phone
              console.log(this.selectphone)
          },
+        backRegister(){
+             console.log(1)
+             this.$emit('selectPhone',this.selectphone)
+        },
 	    }
 		}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 	.country{
 		font-size: 0.3rem;
 	}
 	.active{
 			background: #ccc;
 		}
+  .login{
+    width: 100vw;
+    background-color: rgb(246,248,250);
+    height: 8vh;
+    line-height: 8vh;
+    text-align: center;
+    /*position: absolute;
+    top: 0;*/
+    font-size: 0.3rem;
+    border-bottom: 0.02rem solid #CCC;
+    img{
+    margin-left: 3vw;
+    margin-top: 2vh;
+    height: 4vh;
+    width: 8vw;
+    float: left;
+  }
+  }
 </style>

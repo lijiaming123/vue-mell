@@ -12,6 +12,7 @@
   show-set-default
   show-search-result
   @save="onSave"
+  @delete="onDelete"
   @change-detail="onChangeDetail"
 />
 	</div>
@@ -39,15 +40,49 @@ import Head from '@/common/head.vue';
 
     },
     onSave(content){
+    	console.log(content)
       this.axios.post('/api/editaddr',{
-      	account:'lijiaming',
-      	_id:this.address._id
+      	_id:this.address._id,
+      	account: 'lijiaming',
+        name:content.name,
+        tel:content.tel,
+        address:content.province + content.city + content.county + content.address_detail,
+        address_detail:content.address_detail,
+        province : content.province,
+        city: content.city,
+        county : content.county,
+        postal_code : content.postal_code,
+        default : content.is_default,
+        area_code : content.area_code
       }).then((res) => {
       	console.log(res)
+      	if (res.data.code == 200) {
+      		this.$router.push({
+      			path:'/addr'
+      		})
+      	}
       }).catch(error => {
 	          		console.log(error);
 	        	});
-    }
+    },
+    //axios delete传参
+    onDelete(content){
+      console.log(content._id)
+      this.axios.delete('/api/deleteaddr',{
+      	data:{
+      	_id:content._id,
+        }
+      }).then((res) => {
+      	console.log(res)
+      	if (res.data.code == 200) {
+      		this.$router.push({
+      			path:'/addr'
+      		})
+      	}
+      }).catch(error => {
+      	console.log(error)
+      })
+    },
   }
 }
 </script>

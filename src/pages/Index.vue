@@ -53,7 +53,7 @@
     <!-- 商品列表 -->
 	 <div class="index-goodlist">
 	  <el-row>
-		  <el-col :span="12" class="el-col"><div><img src="../assets/img/computer.png"></div>
+		  <el-col :span="12" class="el-col"><div><img src="../assets/img/computer.png" @click="$router.push({path:'/gooddetail/1'})"></div>
 		  	<div class="seckill-price"><span>¥4788</span></div><div><span class="oldprice">4988</span></div></el-col>
 		  <el-col :span="12"><div><img src="../assets/img/computer.png"></div>
 		  	<div class="seckill-price"><span>¥139</span></div><div><span class="oldprice">199</span></div></el-col>

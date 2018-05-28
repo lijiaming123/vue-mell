@@ -169,13 +169,45 @@ app.use(bodyParser.urlencoded({extended: false}));
           })
     });
   });
+  //findByIdAndUpdate通过查找_id更新数据
   //修改地址
     app.post('/api/editaddr',function(req,res){
       var mongoose = require('mongoose');  
       var id = mongoose.Types.ObjectId(req.body._id); 
       console.log(id)
-      db.addrModel.findOne({_id:id},function(err,doc){
+      db.addrModel.findByIdAndUpdate({_id:id},{
+        account: req.body.account,
+        name:req.body.name,
+        tel:req.body.tel,
+        address:req.body.province + req.body.city + req.body.county + req.body.address_detail,
+        address_detail:req.body.address_detail,
+        province : req.body.province,
+        city: req.body.city,
+        county : req.body.county,
+        postal_code : req.body.postal_code,
+        default : req.body.is_default,
+        area_code : req.body.area_code
+      },function(err,doc){
         console.log(doc)
+        if (err) {
+          res.end('保存失败' + err)
+        }else {
+          res.json({code:200,msg:'保存地址成功',body:doc})
+        }
+      })
+    });
+    //删除地址
+    app.delete('/api/deleteaddr',function(req,res){
+      var mongoose = require('mongoose');  
+      var id = mongoose.Types.ObjectId(req.body._id); 
+      console.log(id)
+      db.addrModel.findByIdAndRemove({_id:id},function(err,doc){
+        console.log(doc)
+        if (err) {
+          res.end('删除失败' + err)
+        }else {
+          res.json({code:200,msg:'删除地址成功',body:doc})
+        }
       })
     })
     app.get('*', function(req, res){

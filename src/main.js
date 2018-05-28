@@ -9,31 +9,43 @@ import router from './router'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// import { IndexList, IndexSection } from 'mint-ui';
+// import { Cell } from 'mint-ui';
+// import { Button } from 'mint-ui';
+
+// Vue.component(Button.name, Button);
+// Vue.component(Cell.name, Cell);
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 Vue.use(Vant);
 Vue.use(ElementUI)
+// Vue.component(IndexList.name, IndexList);
+// Vue.component(IndexSection.name, IndexSection);
 Vue.use(MintUI)
-// const api = axios.create();
+const api = axios.create();
 Vue.config.productionTip = false
 axios.defaults.timeout = 5000//不能超过5秒
 Vue.prototype.axios = axios//注册全局的axios
-// api.interceptors.request.use(function (config) {
-//     // 在发送请求之前做些什么
-//     store.commit('UPDATE_ROUTER_LOADING',true);
-//   }, function (error) {
-//     // 对请求错误做些什么
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest'
+axios.defaults.timeout = 5000;
+api.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    store.commit('UPDATE_ROUTER_LOADING',true);
+        return config;
+  }, function (error) {
+    // 对请求错误做些什么
 
-//   });
-// api.interceptors.response.use(function (response) {
-//     // 对响应数据做点什么
-//     store.commit('UPDATE_ROUTER_LOADING',true);
-//   }, function (error) {
-//     // 对响应错误做点什么
-//     return Promise.reject(error);
-//   });
+  });
+api.interceptors.response.use(function (response) {
+    // 对响应数据做点什么
+    store.commit('UPDATE_ROUTER_LOADING',true);
+  }, function (error) {
+    // 对响应错误做点什么
+    return Promise.reject(error);
+  });
 
 router.beforeEach((to, from, next) => {
     store.commit('UPDATE_ROUTER_LOADING',true)

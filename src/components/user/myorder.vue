@@ -12,19 +12,19 @@
 		</mt-navbar> 
 	       <mt-tab-container v-model="selected">
 	  <mt-tab-container-item id="1">
-	    <mt-cell v-for="n in 10" :title="'内容 ' + n" />
+	    <mt-cell v-for="(item,index) in 10" :title="'内容 ' + item" :key="index" />
 	  </mt-tab-container-item>
 	  <mt-tab-container-item id="2">
-	    <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+	    <mt-cell v-for="(item,index) in 4" :title="'测试 ' + item" :key="index" />
 	  </mt-tab-container-item>
 	  <mt-tab-container-item id="3">
-	    <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+	    <mt-cell v-for="(item,index) in 6" :title="'选项 ' + item" :key="index" />
 	  </mt-tab-container-item>
 	  <mt-tab-container-item id="4">
-	    <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+	    <mt-cell v-for="(item,index) in 6" :title="'选项 ' + item" :key="index" />
 	  </mt-tab-container-item>
 	  <mt-tab-container-item id="5">
-	    <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+	    <mt-cell v-for="(item,index) in 6" :title="'选项 ' + item" :key="index" />
 	  </mt-tab-container-item>
 	</mt-tab-container>
     </div>

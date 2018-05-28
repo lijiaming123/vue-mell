@@ -1,13 +1,18 @@
 <template>
-	<div v-loading="loading">
-		<div class="category-top">
+	<div v-loading="loading" class="category">
+		<!-- <div class="category-top">
 			<img src="../assets/img/back.png" height="20" width="20">
 			<div class="search">
 			<img src="@/assets/img/search.png" width="15" height="15">
 			<input type="text">
 		    </div>
 			<img src="../assets/img/moreandmore.png" height="20" width="20">
-		</div>
+		</div> -->
+		<form action="/">
+		  <van-search
+		    placeholder="请输入商品名称"
+		  />
+		</form>
 		<!-- category-->
 		<div>
 			<!-- 左边栏 -->
@@ -61,7 +66,9 @@
 	}
 </script>
 
-<style>
+<style lang="less" scoped>
+    .category{
+    	height:100vh;
 	.category-top{
 		height: 6vh;
 	}
@@ -92,4 +99,5 @@
 	.asideactive{
 		background: #fff;
 	}
+}
 </style>

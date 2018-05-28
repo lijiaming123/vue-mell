@@ -49,11 +49,11 @@
 		</div>
 	</div>
 	<div class="user-other">
-		<div><img src="@/assets/img/user-other/coupon.png"><span>优惠券</span><img src="@/assets/img/right.png"></div>
-		<div><img src="@/assets/img/user-other/assets.png"><span>我的资产</span><img src="@/assets/img/right.png"></div>
-		<div @click="goToaddr"><img src="@/assets/img/user-other/addr.png"><span>收货地址</span><img src="@/assets/img/right.png"></div>
-		<div><img src="@/assets/img/user-other/recode.png"><span>浏览记录</span><img src="@/assets/img/right.png"></div>
-		<div><img src="@/assets/img/user-other/concern.png"><span>我的关注</span><img src="@/assets/img/right.png"></div>
+		<div><!-- <img src="@/assets/img/user-other/coupon.png"> --><span>优惠券</span><!-- <img src="@/assets/img/right.png"> --></div>
+		<div><!-- <img src="@/assets/img/user-other/assets.png"> --><span>我的资产</span><!-- <img src="@/assets/img/right.png"> --></div>
+		<div @click="goToaddr"><!-- <img src="@/assets/img/user-other/addr.png"> --><span>收货地址</span><!-- <img src="@/assets/img/right.png"> --></div>
+		<div><!-- <img src="@/assets/img/user-other/recode.png"> --><span>浏览记录</span><!-- <img src="@/assets/img/right.png"> --></div>
+		<div><!-- <img src="@/assets/img/user-other/concern.png"> --><span>我的关注</span><!-- <img src="@/assets/img/right.png"> --></div>
 	</div>
 	<div class="user-bottom">
 		<div @click="Logoff">退出登录</div>
@@ -162,17 +162,12 @@ import Foot from '@/common/foot.vue';
 		margin-top: 2vh;
 		background: #fff;
 		>div{
-			height: 6vh;
-			line-height: 6vh;
-			border-bottom: 1px solid #ccc;
+			height: 0.8rem;
+			line-height: 0.8rem;
+			border-bottom: 1px solid #999;
 		}
 		div:last-child{
            border-bottom: none;
-		}
-		>div img:first-child{
-			width: 0.6rem;
-			height: 5vh;
-			margin: 0 0.2rem;
 		}
 		>div img:last-child{
 			width: 0.6rem;
@@ -181,8 +176,9 @@ import Foot from '@/common/foot.vue';
 			margin-right: 0.2rem;
 		}
 		span{
-			font-size: 0.3rem;
-			font-weight: 600;
+			font-size:0.3rem;
+			color:#999;
+			padding-left:0.2rem;
 		}
 	}
 </style>

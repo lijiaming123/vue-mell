@@ -16,9 +16,15 @@ const Country = resolve => require(['@/components/user/country.vue'],resolve);//
 const Addr = resolve => require(['@/components/user/addr.vue'],resolve);//收货地址
 const Newaddr = resolve => require(['@/components/user/newaddr.vue'],resolve);//新增收货地址
 const Editaddr = resolve => require(['@/components/user/editaddr.vue'],resolve);//新增收货地址
+const Gooddetail = resolve => require(['@/components/gooddetail.vue'],resolve);//商品详情页
 
 export default new Router({
   routes: [
+  {
+   path: '*',
+   name:'首页',
+   component: Index
+  },
   {
     path:'/',
     name:'首页',
@@ -32,6 +38,10 @@ export default new Router({
     name:'更多页',
     component:More
   },{
+    path:'/gooddetail/:id',
+    name:'商品详情页',
+    component:Gooddetail
+  },{
   	path:'/shopcar',
     name:'购物车页',
     component:Shopcar,
@@ -44,7 +54,7 @@ export default new Router({
     component:User,
     meta: {
          requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
-       }
+       },
   },{
     path:'/login',
     name:'登录页',
@@ -72,7 +82,7 @@ export default new Router({
          requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
        }
   },{
-    path:'/editaddr',
+    path:'/editaddr/:id',
     name:'编辑地址',
     component:Editaddr,
     meta: {

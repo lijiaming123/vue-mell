@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+mongoose.Promise = global.Promise;
 //mogod自增长
 let counter = 1;
 let CounterId = {type:Number,default:() => counter++}
@@ -36,7 +37,6 @@ const bigclassSchema = new Schema({
 //地址
 const addrSchema = new Schema({
   // id:Number,
-  _id:String,
 	name:String,
 	account:String,
   tel:String,

@@ -1,37 +1,74 @@
 	<template>
 		<div class="login">
-		<v-header>
-			<h1 slot="title">登录</h1>
-		</v-header>
+			<!-- 解决退出登录点击返回问题 -->
+		<div class="login-top">
+	    <img src="@/assets/img/back.png" @click="$router.push({
+	    	path:'/'
+	    })">
+	    <slot name="title">登录</slot>
+	    </div>
 		<div class="login-content">
 			<div class="login-keyword" v-if='msgshow == false'>
 				<div>
-				<img src="../../assets/img/account.png" height="20" width="20">
+				<!-- <img src="../../assets/img/account.png" height="20" width="20">
 				<input type="" name="" placeholder="用户名/邮箱/手机号" v-model='account'>
-				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="account!=''">
+				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="account!=''"> -->
+				<van-field
+				    v-model="account"
+				    label="账号"
+				    icon="clear"
+				    placeholder="请输入账号"
+				    required
+				    @click-icon="account = ''"
+				  />
 			    </div>
 			</div>
 			<div class="login-keyword" v-if='msgshow == false'>
 				<div>
-				<img src="../../assets/img/password.png" height="20" width="20">
+				<!-- <img src="../../assets/img/password.png" height="20" width="20">
 				<input type="password" name="" placeholder="请输入密码" v-model='password'>
-				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="password!=''">
+				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="password!=''"> -->
+				<van-field
+				    v-model="password"
+				    type="password"
+				    label="密码"
+				    icon="clear"
+				    placeholder="请输入密码"
+				    required
+				    @click-icon="password = ''"
+				  />
 			    </div>
 			</div>
 			<div class="login-keyword" v-if='msgshow == true'>
 				<div>
-				<img src="../../assets/img/phone.png" height="20" width="20">
+				<!-- <img src="../../assets/img/phone.png" height="20" width="20">
 				<input type="" name="" placeholder="请输入手机号" v-model='msgphone' class="phone-input">
 				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="msgphone != ''">
-				<span class="phone-code" @click='Getcode'>获取验证码</span>
+				<span class="phone-code" @click='Getcode'>获取验证码</span> -->
+				<van-field
+				    center
+				    v-model="msgphone"
+				    left-icon="phone"
+				    placeholder="请输入手机号码"
+				    icon="clear"
+				    @click-icon="msgphone = ''"
+				  >
+				    <van-button slot="button" size="small" type="primary">发送验证码</van-button>
+				  </van-field>
 			    </div>
 			</div>
 			<div class="login-keyword" v-if='msgshow == true'>
-				<div>
+				<!-- <div>
 				<img src="../../assets/img/message.png" height="20" width="20">
 				<input type="" name="" placeholder="请输入短信验证码" v-model='msgpassword'>
 				<img src="../../assets/img/clear.png" height="20" width="20" class="clear" v-if="msgpassword != ''">
-			    </div>
+			    </div> -->
+			      <van-field
+					    v-model="msgpassword"
+					    icon="clear"
+					    placeholder="请输入收到的短信验证码"
+					    @click-icon="msgpassword = ''"
+					  />
 			</div>
 			<p class="tip">{{tip}}</p>
 			<div class="login-register">
@@ -120,10 +157,28 @@
 		}
 		</script>
 
-		<style scoped>
+		<style lang="less" scoped>
 	    .login{
 	    	font-size: 0.3rem;
 	    }
+	    .login-top{
+		width: 100vw;
+		background-color: rgb(246,248,250);
+		height: 8vh;
+		line-height: 8vh;
+		text-align: center;
+		/*position: absolute;
+		top: 0;*/
+		font-size: 0.3rem;
+		border-bottom: 0.02rem solid #CCC;
+		img{
+		margin-left: 3vw;
+		margin-top: 2vh;
+		height: 4vh;
+		width: 8vw;
+		float: left;
+		}
+	}
 		.login-content{
 			margin-top: 20vh;
 		}
@@ -132,7 +187,7 @@
 			line-height: 10vh;
 		}
 		.login-keyword div{
-			width: 70vw;
+			width: 80vw;
 			margin: 0 auto;
 		}
 		.phone-input{
@@ -168,7 +223,7 @@
 		    margin: -0.02rem 0 0 -0.4rem; 
 		}
 		.login-register,.login-sure,.login-message{
-			width: 70vw;
+			width: 80vw;
 			margin: 0 auto;
 		}
 		.login-register{
